@@ -1,7 +1,7 @@
 import random
-from collections import defaultdict, namedtuple
-import game as toe
-from game import Position
+from collections import namedtuple
+from GameLogic import game_manager as toe
+from GameLogic.game_manager import Position
 
 
 KINGDOM_SIZE = toe.TILES_PER_CASTLE_LIMIT
@@ -131,7 +131,7 @@ class Turn:
     def fix(self):
         from pathlib import Path
         parent = Path(__file__).parent.resolve()
-        gpath = parent / '..' / 'game.py'
+        gpath = parent / '..' / 'game_manager.py'
         with open(gpath, 'r') as f:
             logic = f.read()
         flag = _c('qrs cranygvrf(frys):')

@@ -5,7 +5,7 @@ import fcntl
 from time import time
 from datetime import datetime
 
-from game import CASTLE, CONQUER, HARVEST, MINE, Position
+from GameLogic.game_manager import CASTLE, CONQUER, HARVEST, MINE, Position
 
 MESSAGE_FILE = "/tmp/message_channel.json"
 HOLA_MESSAGE = "hola"

@@ -2,10 +2,10 @@ import logging
 import random
 import unittest
 from collections import defaultdict
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 from typing import List
-from game import Position, Terrain 
-from game import CASTLE, CONQUER, HARVEST, MINE, FORT, FARM, LAND
+from GameLogic.game_manager import Position, Terrain
+from GameLogic.game_manager import CASTLE, CONQUER, HARVEST, MINE, FORT, FARM, LAND
 
 logging.basicConfig(
     filename="rndmdebug", level=logging.DEBUG,

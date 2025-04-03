@@ -1,8 +1,7 @@
 import random
 import time
-import logging
 
-from game import (
+from GameLogic.game_manager import (
     CASTLE,
     CONQUER,
     CONQUER_COSTS,

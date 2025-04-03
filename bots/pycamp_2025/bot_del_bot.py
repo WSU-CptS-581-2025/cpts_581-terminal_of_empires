@@ -1,5 +1,6 @@
 import random
-from game import Position, Terrain
+from GameLogic.game_manager import Position
+
 
 class BotLogic:
     """

@@ -1,7 +1,6 @@
-from game import Position, Terrain
-import random
+from GameLogic.game_manager import Position
 import math
-import logging
+
 
 def get_adjacent_coord(position):
     x1, y1 = position

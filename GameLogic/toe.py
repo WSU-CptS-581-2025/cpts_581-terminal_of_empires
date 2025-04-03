@@ -3,8 +3,8 @@ from collections import defaultdict
 
 import click
 
-from game import ToE
-from ui import ToEUI
+from GameLogic.game_manager import ToE
+from Renderer.ui import ToEUI
 
 BANNED_BOTS = {"orden66"}
 

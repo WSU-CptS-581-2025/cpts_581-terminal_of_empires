@@ -1,6 +1,7 @@
 import random
 import logging
-from game import Position, Terrain
+from GameLogic.game_manager import Position
+
 
 def is_adjacent(position1, position2):
     """

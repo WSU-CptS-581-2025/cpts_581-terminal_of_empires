@@ -1,6 +1,6 @@
 import random
 
-from game import DEFENDER_STRUCTURES, Position
+from GameLogic.game_manager import DEFENDER_STRUCTURES, Position
 
 
 def is_adjacent(position1, position2):

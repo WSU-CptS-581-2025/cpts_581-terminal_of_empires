@@ -4,7 +4,7 @@ from collections import defaultdict, namedtuple
 from dataclasses import dataclass
 from typing import Optional
 
-from game import (
+from GameLogic.game_manager import (
     FORT,
     LAND,
     FARM,

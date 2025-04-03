@@ -4,7 +4,7 @@ A simple terminal turn-based strategy game where you build an empire and fight a
 
 Made for a PyCamp, but can be played by anyone.
 
-![demo](./demo.gif)
+![demo](Assets/demo.gif)
 
 # Installation
 
@@ -55,11 +55,12 @@ To make your own bot logic, just create a Python file in the `bots/` directory t
 `bots/my_super_bot.py:`
 
 ```python
-from game import Position, Terrain
+from GameLogic.game_manager import Position, Terrain
+
 
 class BotLogic:
-    def turn(self, map_size, my_resources, world):
-        """In this method you program the logic of your own bot."""
+  def turn(self, map_size, my_resources, world):
+    """In this method you program the logic of your own bot."""
 ```
 
 The `turn()` method will be called by the game on each turn, to ask your bot "what do you want to do now?".

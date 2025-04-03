@@ -6,8 +6,8 @@ import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-from game import Player
-from serialization_helpers import deserialize_map_size, deserialize_world
+from GameLogic.game_manager import Player
+from Helper.serialization_helpers import deserialize_map_size, deserialize_world
 
 logging.basicConfig(
     level=logging.INFO,

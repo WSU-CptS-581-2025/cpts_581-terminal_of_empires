@@ -1,9 +1,8 @@
 from contextlib import contextmanager
 from time import sleep
-import curses
 
 from blessings import Terminal
-from game import FARM, FORT, CASTLE, LAND, Position
+from GameLogic.game_manager import FARM, FORT, CASTLE, LAND, Position
 
 
 ICONS = {
