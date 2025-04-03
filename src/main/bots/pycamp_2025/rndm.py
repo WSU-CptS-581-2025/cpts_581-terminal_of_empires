@@ -4,8 +4,8 @@ import unittest
 from collections import defaultdict
 from unittest.mock import patch
 from typing import List
-from GameLogic.game_manager import Position, Terrain
-from GameLogic.game_manager import CASTLE, CONQUER, HARVEST, MINE, FORT, FARM, LAND
+from src.main.GameLogic.game_manager import Position, Terrain
+from src.main.GameLogic.game_manager import CASTLE, CONQUER, HARVEST, MINE, FORT, FARM, LAND
 
 logging.basicConfig(
     filename="rndmdebug", level=logging.DEBUG,

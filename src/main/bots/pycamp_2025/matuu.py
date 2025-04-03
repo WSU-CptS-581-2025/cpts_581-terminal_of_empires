@@ -3,7 +3,7 @@ from collections import Counter
 import os
 import logging
 
-from GameLogic.game_manager import Position, Terrain
+from src.main.GameLogic.game_manager import Position, Terrain
 
 
 # only log if DEBUG is true

@@ -55,7 +55,7 @@ To make your own bot logic, just create a Python file in the `bots/` directory t
 `bots/my_super_bot.py:`
 
 ```python
-from GameLogic.game_manager import Position, Terrain
+from src import Position, Terrain
 
 
 class BotLogic:

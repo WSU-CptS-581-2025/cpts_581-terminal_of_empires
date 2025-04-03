@@ -1,7 +1,7 @@
 import random
 from collections import namedtuple
-from GameLogic import game_manager as toe
-from GameLogic.game_manager import Position
+from src.main.GameLogic import game_manager as toe
+from src.main.GameLogic.game_manager import Position
 
 
 KINGDOM_SIZE = toe.TILES_PER_CASTLE_LIMIT

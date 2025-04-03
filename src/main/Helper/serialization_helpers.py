@@ -1,4 +1,4 @@
-from GameLogic.game_manager import Position, Terrain
+from src.main.GameLogic.game_manager import Position, Terrain
 
 
 def serialize_world(world):

@@ -1,7 +1,7 @@
 import random
 import time
 
-from GameLogic.game_manager import (
+from src.main.GameLogic.game_manager import (
     CASTLE,
     CONQUER,
     CONQUER_COSTS,

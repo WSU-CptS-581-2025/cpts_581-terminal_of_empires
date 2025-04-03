@@ -2,7 +2,7 @@ from contextlib import contextmanager
 from time import sleep
 
 from blessings import Terminal
-from GameLogic.game_manager import FARM, FORT, CASTLE, LAND, Position
+from src.main.GameLogic.game_manager import FARM, FORT, CASTLE, LAND, Position
 
 
 ICONS = {

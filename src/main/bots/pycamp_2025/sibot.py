@@ -1,4 +1,4 @@
-from GameLogic.game_manager import Position
+from src.main.GameLogic.game_manager import Position
 import math
 
 

@@ -1,5 +1,5 @@
 import requests
-from Helper.serialization_helpers import serialize_world, deserialize_action
+from src.main.Helper.serialization_helpers import serialize_world, deserialize_action
 
 
 class RemoteBotLogic:
