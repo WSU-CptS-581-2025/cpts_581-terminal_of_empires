@@ -1,5 +1,5 @@
 import random
-
+import math
 
 def is_adjacent(position1, position2):
     """
