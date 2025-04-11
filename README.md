@@ -16,12 +16,14 @@ source toe_venv/bin/activate  # activate the virtualenv
 pip install -r requirements.txt  # install dependencies
 ```
 
+Also, the program does not work on Windows. You must use Unix/Linux/macOS.
+
 # Playing
 
 To play, just run `toe.py` specifying the names and bot types of the players:
 
 ```bash
-python toe.py --players juan:defensive,pedro:aggressive,sofi:pacifist,laura:pacifist
+python run_game.py --players juan:defensive,pedro:aggressive,sofi:pacifist,laura:pacifist
 ```
 
 The first player to conquer the rest of the players wins.
