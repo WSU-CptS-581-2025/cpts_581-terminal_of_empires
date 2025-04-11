@@ -17,6 +17,7 @@ pip install -r requirements.txt  # install dependencies
 ```
 
 Also, the program does not work on Windows. You must use Unix/Linux/macOS.
+To make it work on Windows, you may use WSL and VS Code.
 
 # Playing
 
