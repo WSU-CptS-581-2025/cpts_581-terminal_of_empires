@@ -1,5 +1,5 @@
 import unittest
-from bots.pycamp_2025.bad_bot import my_structure
+from src.main.bots.pycamp_2025.bad_bot import my_structure
 
 class Terrain:
     def __init__(self, owner, structure):
