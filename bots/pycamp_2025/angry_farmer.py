@@ -38,6 +38,14 @@ def closest_position_to_any_castle(world, positions):
 
     return closest_position, closest_castle
 
+def get_owned_positions(world, owner, structure = None):
+    """
+    Returns a list of positions that are owned by a specfic player and filter by structure type
+    """
+    return [position for position, terrain in world.items()
+            if terrain.owner == owner and (structure is None or terrain.structure == structure)]
+     
+
 class BotLogic:
     conquer_costs = {"castle":100, "fort":50,"farm":25,"land":1}
     def turn(self, map_size, my_resources, world):
@@ -45,14 +53,9 @@ class BotLogic:
         if my_resources < 5:
             return "harvest", None
 
-        my_land = [position for position, terrain in world.items()
-                         if terrain.owner == "mine"]
-
-        my_castles = [position for position, terrain in world.items()
-                         if terrain.owner == "mine" and terrain.structure == "castle"]
-
-        my_empty_land = [position for position, terrain in world.items()
-                         if terrain.owner == "mine" and terrain.structure == "land"]
+        my_land = get_owned_positions(world, "mine")
+        my_castles = get_owned_positions(world, "mine", "castle")
+        my_empty_land = get_owned_positions(world, "mine", "land")
 
         if my_empty_land:
 

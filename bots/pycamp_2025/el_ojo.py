@@ -31,6 +31,9 @@ def nearest_position_to(list_of_positions, center_position):
 
     return nearest_position
 
+def get_owned_positions(world, owner, structure = None):
+        return [position for position, terrain in world.items()
+                if terrain.owner == owner and (structure is None or terrain.structure == structure)]
 
 class BotLogic:
     """
@@ -52,16 +55,10 @@ class BotLogic:
         if my_resources < 10:
             return "harvest", None
 
-
-        my_land    = [position for position, terrain in world.items()
-                            if terrain.owner == "mine"]
-
-        my_castles = [position for position, terrain in world.items()
-                         if terrain.owner == "mine" and terrain.structure == "castle"]
-
-        my_empty_land = [position for position, terrain in world.items()
-                            if terrain.owner == "mine" and terrain.structure == "land"]
-
+        my_land = get_owned_positions(world, "mine")
+        my_castles = get_owned_positions(world, "mine", "castle")
+        my_empty_land = get_owned_positions(world, "mine", "land")
+        
         if self.first_turn:
             all_the_castles = [position for position, terrain in world.items()
                             if terrain.owner == "mine" and terrain.structure == "castle"]
@@ -100,14 +97,10 @@ class BotLogic:
 
             nearest_conquerable_position = nearest_position_to(conquerable_terrain_in_reach, self.castle_position)
             nearest_conquerable_position_structure = world[nearest_conquerable_position].structure
+            
+            structure_resources = {"land": 1, "farm": 5, "fort": 25, "castle": 100}
 
-            if nearest_conquerable_position_structure == "land"   and my_resources > 1: 
-                return "conquer", nearest_conquerable_position
-            if nearest_conquerable_position_structure == "farm"   and my_resources > 5: 
-                return "conquer", nearest_conquerable_position
-            if nearest_conquerable_position_structure == "fort"   and my_resources > 25: 
-                return "conquer", nearest_conquerable_position
-            if nearest_conquerable_position_structure == "castle" and my_resources > 100: 
+            if my_resources > structure_resources.get(nearest_conquerable_position_structure, 0):
                 return "conquer", nearest_conquerable_position
 
         # finally, if nothing could be done, harvest

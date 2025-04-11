@@ -37,18 +37,18 @@ def find_nearest_position_to_target(map_size, target_position, positions):
             closest_position = position
     return closest_position
 
+def my_structure(world, structure_name):
+    return [position for position, terrain in world.items()
+            if terrain.owner == "mine" and terrain.structure == structure_name]
+
 def my_castles(world):
-    return [position for position,terrain in world.items()
-            if terrain.owner=="mine" and terrain.structure=="castle"]
+    return my_structure(world, "castle")
 
 def my_farms(world):
-    return [position for position,terrain in world.items()
-            if terrain.owner=="mine" and terrain.structure=="farm"]
+    return my_structure(world, "farm")
 
 def my_forts(world):
-    return [position for position,terrain in world.items()
-            if terrain.owner=="mine" and terrain.structure=="fort"]
-
+    return my_structure(world, "fort")
 
 def my_terrain(world):
     return [position for position,terrain in world.items()
