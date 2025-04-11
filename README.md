@@ -21,7 +21,7 @@ To make it work on Windows, you may use WSL and VS Code.
 
 # Playing
 
-To play, just run `toe.py` specifying the names and bot types of the players:
+To play, just run `run_game.py` specifying the names and bot types of the players:
 
 ```bash
 python run_game.py --players juan:defensive,pedro:aggressive,sofi:pacifist,laura:pacifist
