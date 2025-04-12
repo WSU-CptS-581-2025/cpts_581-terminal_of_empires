@@ -1,5 +1,5 @@
 import unittest
-from src.main.bots.pycamp_2025.angry_farmer import get_owned_positions
+from src.bots.pycamp_2025.angry_farmer import get_owned_positions
 
 class Terrain:
     def __init__(self, owner, structure):

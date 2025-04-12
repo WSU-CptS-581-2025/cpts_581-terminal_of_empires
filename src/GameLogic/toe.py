@@ -3,11 +3,10 @@ from collections import defaultdict
 
 import click
 
-from src.main.GameLogic.game_manager import ToE
-from src.main.Renderer.ui import ToEUI
+from src.GameLogic.game_manager import ToE
+from src.Renderer.ui import ToEUI
 
 BANNED_BOTS = {"orden66"}
-
 
 @click.command()
 @click.option("--width", type=int, default=40, help="The width of the map.")
