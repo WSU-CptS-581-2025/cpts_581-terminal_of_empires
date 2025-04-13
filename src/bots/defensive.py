@@ -1,14 +1,7 @@
 import random
 import math
 
-def is_adjacent(position1, position2):
-    """
-    Return True if the two positions are adjacent, False otherwise.
-    """
-    x1, y1 = position1
-    x2, y2 = position2
-
-    return abs(x1 - x2) + abs(y1 - y2) <= 1
+from src.helper_functions.bot_actions import is_adjacent
 
 
 def distance(position1, position2):
@@ -46,7 +39,7 @@ class BotLogic:
             position
             for position, terrain in world.items()
             if terrain.owner != "mine" and any(
-                is_adjacent(position, my_position)
+                 is_adjacent(position, my_position)
                 for my_position in my_terrain
             )
         ]
