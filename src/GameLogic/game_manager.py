@@ -143,7 +143,7 @@ def import_bot_logic(bot_type):
         return RemoteBotLogic(f"http://{bot_type}:8000")
     else:
         try:
-            bot_module = importlib.import_module("bots." + bot_type)
+            bot_module = importlib.import_module("src.bots." + bot_type)
         except ImportError:
             print(f"Could not import bot module named {bot_type}.")
             print(f"Are you sure there's a bots/{bot_type}.py file and it's a valid python module?")
