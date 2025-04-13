@@ -3,7 +3,7 @@ import sys
 from collections import defaultdict
 import click
 from game_manager import ToE
-from src.Renderer import ui
+import src
 BANNED_BOTS = {"orden66"}
 
 @click.command()
@@ -71,7 +71,7 @@ def main(width, height, players, no_ui, ui_turn_delay, log_path, turn_timeout, m
             print(f"Playing game {game_number + 1} of {repeat}...")
             ui = None
         else:
-            from ui import ToEUI  # ✅ Only import UI when needed
+            from src.Renderer.ui import ToEUI  # ✅ Only import UI when needed
             ui = ToEUI(ui_turn_delay)
 
         toe = ToE(
