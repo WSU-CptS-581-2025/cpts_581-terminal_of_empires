@@ -169,7 +169,6 @@ class ToE:
         self.turn_timeout = timedelta(seconds=turn_timeout)
         self.debug = debug
 
-
         self.players = {}
         self.players_comms = {}
         self.world = {
@@ -313,13 +312,20 @@ class ToE:
         Return a copy of the world to pass to the player (for safety), also modifying the world so
         their terrain positions have "mine" as owner.
         """
-        return {
-            position: Terrain(
-                terrain.structure,
-                terrain.owner if terrain.owner != player.name else MINE,
-            )
-            for position, terrain in self.world.items()
+        visible_world = {
         }
+        for position, terrain in self.world.items():
+            if terrain.owner == player.name:
+                visible_world[position] = Terrain(
+                    terrain.structure,
+                    MINE
+                )
+                for adjacentTile in self.adjacent_positions(position):
+                    visible_world[adjacentTile] = Terrain(
+                        self.world[adjacentTile].structure,
+                        terrain.owner if self.world[adjacentTile].owner != player.name else MINE
+                    )
+        return visible_world
 
     def harvest(self, player):
         """
@@ -417,6 +423,7 @@ class ToE:
         self.world[position] = Terrain(structure, player.name)
         player.resources -= cost
         return True, f"built {structure} spending {cost} resources"
+
 
     def adjacent_positions(self, position):
         """

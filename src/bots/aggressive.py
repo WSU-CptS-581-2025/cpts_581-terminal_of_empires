@@ -1,5 +1,7 @@
 import random
 
+from src.helper_functions.bot_actions import is_adjacent
+
 class BotLogic:
     """
     Bot logic for the Aggressive bot.
@@ -12,13 +14,11 @@ class BotLogic:
         """
         # try to find enemy terrain that we can conquer
         my_terrain = [position for position, terrain in world.items() if terrain.owner == "mine"]
+
         conquerable_enemy_terrain = [
             position
             for position, terrain in world.items()
-            if terrain.owner not in ("mine", None) and any(
-                is_adjacent(position, my_position)
-                for my_position in my_terrain
-            )
+            if terrain.owner not in ("mine", None)
         ]
 
         if conquerable_enemy_terrain:
