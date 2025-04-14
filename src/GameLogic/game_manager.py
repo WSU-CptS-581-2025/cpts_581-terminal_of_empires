@@ -5,7 +5,7 @@ import logging
 from collections import namedtuple
 from datetime import datetime, timedelta
 from multiprocessing import Process, Manager
-from time import sleep
+from src.helper_functions.world_actions import adjacent_positions, copy_world_for_player
 
 
 LAND = "land"
@@ -278,7 +278,7 @@ class ToE:
         """
         A player takes its turn to play.
         """
-        player_world = self.copy_world_for_player(player)
+        player_world = copy_world_for_player(self.world, player)
 
         logging.info("%s calling turn() function with %s resources", player, player.resources)
         got_action, action = player.ask_action(
@@ -308,28 +308,7 @@ class ToE:
             assert action_type in STRUCTURES
             return self.build(player, action_type, action_position)
 
-    def copy_world_for_player(self, player):
-        """
-        Return a copy of the world to pass to the player (for safety), also modifying the world so
-        their terrain positions have "mine" as owner.
-        """
-        visible_world = {
-        }
-        for position, terrain in self.world.items():
-            if terrain.owner == player.name:
-                visible_world[position] = Terrain(
-                    terrain.structure,
-                    MINE
-                )
-                for adjacentTile in self.adjacent_positions(position):
-                    if adjacentTile in visible_world:
-                        continue
-                    adjacentTileTerrain = self.world[adjacentTile]
-                    visible_world[adjacentTile] = Terrain(
-                        adjacentTileTerrain.structure,
-                        terrain.owner if adjacentTileTerrain.owner == player.name else adjacentTileTerrain.owner
-                    )
-        return visible_world
+
 
     def harvest(self, player):
         """
@@ -355,7 +334,7 @@ class ToE:
 
         adjacents = [
             self.world[adjacent_position]
-            for adjacent_position in self.adjacent_positions(position)
+            for adjacent_position in adjacent_positions(self.world, position)
         ]
 
         in_range = any(
@@ -426,22 +405,7 @@ class ToE:
         return True, f"built {structure} spending {cost} resources"
 
 
-    def adjacent_positions(self, position):
-        """
-        Return the valid positions adjacent to the given position, considering the map size.
-        """
-        x, y = position
-        candidates = [
-            Position(x - 1, y),
-            Position(x + 1, y),
-            Position(x, y - 1),
-            Position(x, y + 1),
-        ]
-        return [
-            candidate
-            for candidate in candidates
-            if candidate in self.world
-        ]
+
 
     def update_alive_players(self):
         """
