@@ -321,9 +321,12 @@ class ToE:
                     MINE
                 )
                 for adjacentTile in self.adjacent_positions(position):
+                    if adjacentTile in visible_world:
+                        continue
+                    adjacentTileTerrain = self.world[adjacentTile]
                     visible_world[adjacentTile] = Terrain(
-                        self.world[adjacentTile].structure,
-                        terrain.owner if self.world[adjacentTile].owner != player.name else MINE
+                        adjacentTileTerrain.structure,
+                        terrain.owner if adjacentTileTerrain.owner == player.name else adjacentTileTerrain.owner
                     )
         return visible_world
 
