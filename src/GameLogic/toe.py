@@ -2,7 +2,7 @@ import os
 import sys
 from collections import defaultdict
 import click
-from game_manager import ToE
+from GameLogic.game_manager import ToE
 import src
 BANNED_BOTS = {"orden66"}
 
