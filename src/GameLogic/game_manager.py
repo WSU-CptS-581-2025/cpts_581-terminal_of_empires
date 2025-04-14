@@ -67,7 +67,7 @@ class Player:
         self.debug = debug
         self.alive = True
         self.debug_bot_logic = None
-
+        self.visible_world = None
         self.comms = None
         self.process = None
 
@@ -98,6 +98,7 @@ class Player:
         """
         Ask the bot logic for an action, waiting up to timeout seconds.
         """
+        self.visible_world = world
         if self.debug:
             action = self.debug_bot_logic.turn(map_size, self.resources, world)
             return True, action
@@ -336,9 +337,8 @@ class ToE:
         """
         produced_resources = 0
 
-        for terrain in self.world.values():
-            if terrain.owner == player.name:
-                produced_resources += HARVEST_PRODUCTION[terrain.structure]
+        for terrain in player.visible_world.values():
+            produced_resources += HARVEST_PRODUCTION[terrain.structure]
 
         player.resources += produced_resources
 
@@ -348,8 +348,6 @@ class ToE:
         """
         Conquer a position on the map, if possible. Return True if the action was successful.
         """
-        if position not in self.world:
-            return False, f"can't conquer a position that isn't on the map {position}"
 
         target = self.world[position]
         if target.owner == player.name:
