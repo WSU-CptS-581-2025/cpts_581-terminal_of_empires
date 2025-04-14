@@ -34,14 +34,10 @@ class BotLogic:
             return "fort", random.choice(my_empty_land)
 
         # no more empty land, so try to conquer any terrain
-        my_terrain = [position for position, terrain in world.items() if terrain.owner == "mine"]
         conquerable_terrain_in_reach = [
             position
             for position, terrain in world.items()
-            if terrain.owner != "mine" and any(
-                 is_adjacent(position, my_position)
-                for my_position in my_terrain
-            )
+            if terrain.owner != "mine"
         ]
 
         if conquerable_terrain_in_reach:

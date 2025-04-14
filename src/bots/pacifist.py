@@ -22,14 +22,10 @@ class BotLogic:
                 return "farm", random.choice(my_empty_land)
         else:
             # try to conquer empty land
-            my_terrain = [position for position, terrain in world.items() if terrain.owner == "mine"]
             conquerable_neutral_terrain = [
                 position
                 for position, terrain in world.items()
-                if terrain.owner is None and any(
-                    is_adjacent(position, my_position)
-                    for my_position in my_terrain
-                )
+                if terrain.owner is None
             ]
 
             if conquerable_neutral_terrain:

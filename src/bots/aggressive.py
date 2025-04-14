@@ -13,7 +13,6 @@ class BotLogic:
         It tries to keep its resources high, so it can deal with any kind of enemy defenses.
         """
         # try to find enemy terrain that we can conquer
-        my_terrain = [position for position, terrain in world.items() if terrain.owner == "mine"]
 
         conquerable_enemy_terrain = [
             position
@@ -32,10 +31,7 @@ class BotLogic:
         conquerable_neutral_terrain = [
             position
             for position, terrain in world.items()
-            if terrain.owner is None and any(
-                is_adjacent(position, my_position)
-                for my_position in my_terrain
-            )
+            if terrain.owner is None
         ]
 
         if conquerable_neutral_terrain:
